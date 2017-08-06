@@ -20,9 +20,9 @@ namespace Shop.Model.Models
 		[MaxLength(256)]
 		public string Name { set; get; }
 
+		[Required]
 		[Column(TypeName = "varchar")]
 		[MaxLength(256)]
-		[Required]
 		public string Alias { set; get; }
 
 		public string Content { set; get; }

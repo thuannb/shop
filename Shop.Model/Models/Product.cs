@@ -20,12 +20,14 @@ namespace Shop.Model.Models
 		public string Name { set; get; }
 
 		[Required]
+		[Column(TypeName ="varchar")]
+		[MaxLength(255)]
 		public string Alias { set; get; }
 		
 		public int ProductCategoryID { set; get; }
 		//Khoá ngoại
 		[ForeignKey("ProductCategoryID")]
-		public virtual IEnumerable<Product> ProductCategory { set; get; }
+		public virtual IEnumerable<ProductCategorie> ProductCategory { set; get; }
 
 		public decimal Price { set; get; }
 
@@ -33,12 +35,14 @@ namespace Shop.Model.Models
 
 		public int? Warranty { set; get; }
 
+		[MaxLength(500)]
 		public string Description { set; get; }
 
 		public string Content { set; get; }
 
 		public XElement MoreImages { set; get; }
 
+		[MaxLength(500)]
 		public string Image { set; get; }
 
 		public bool? HomeFlag { set; get; }

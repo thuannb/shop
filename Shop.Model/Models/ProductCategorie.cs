@@ -15,17 +15,24 @@ namespace Shop.Model.Models
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]//Tự động tăng dần
 		public int ID { set; get; }
+
 		[Required]
+		[MaxLength(255)]
 		public string Name { set; get; }
+
 		[Required]
+		[Column(TypeName ="varchar")]
+		[MaxLength(255)]
 		public string Alias { set; get; }
 
-		public string ParentID { set; get; }
+		public int? ParentID { set; get; }
 
+		[MaxLength(500)]
 		public string Description { set; get; }
 
 		public int? DisplayOrder { set; get; }
 
+		[MaxLength(500)]
 		public string Image { set; get; }
 
 		public bool? HomeFlag { set; get; }

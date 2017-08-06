@@ -30,6 +30,7 @@ namespace Shop.Model.Models
 
 		public int? DisplayOrder { set; get; }
 
+		[Required]
 		public bool Status { set; get; }
 	}
 
