@@ -58,10 +58,10 @@
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\Post.cs" />
-    <Compile Include="Models\PostCategorie.cs" />
+    <Compile Include="Models\PostCategory.cs" />
     <Compile Include="Models\PostTag.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductCategorie.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductTag.cs" />
     <Compile Include="Models\Slide.cs" />
     <Compile Include="Models\SupportOnline.cs" />
@@ -78,10 +78,6 @@
     <ProjectReference Include="..\Shop.Common\Shop.Common.csproj">
       <Project>{026bb157-ca2b-46fe-9240-7cf2d3f282a1}</Project>
       <Name>Shop.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shop.Data\Shop.Data.csproj">
-      <Project>{7ba9c6dd-af36-4f0f-8a8a-e37c8e10de28}</Project>
-      <Name>Shop.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

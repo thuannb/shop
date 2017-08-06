@@ -12,7 +12,8 @@ namespace Shop.Model.Models
 		public int ID { set; get; }
 
 		[Required]
-		public int Name { set; get; }
+		[MaxLength(255)]
+		public string Name { set; get; }
 
 		//MenuGroups có khóa chính là khóa ngoại của bảng Menus
 		//Như vậy khi cần lấy dữ liệu: Tất cả các menu có MenuGroupID.

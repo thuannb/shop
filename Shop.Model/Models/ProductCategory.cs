@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Shop.Model.Models
 {
 	[Table("ProductCategories")]
-	public class ProductCategorie : Audittable
+	public class ProductCategory : Audittable
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]//Tự động tăng dần

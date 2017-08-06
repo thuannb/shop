@@ -27,7 +27,7 @@ namespace Shop.Model.Models
 		public int ProductCategoryID { set; get; }
 		//Khoá ngoại
 		[ForeignKey("ProductCategoryID")]
-		public virtual IEnumerable<ProductCategorie> ProductCategory { set; get; }
+		public virtual IEnumerable<ProductCategory> ProductCategory { set; get; }
 
 		public decimal Price { set; get; }
 
@@ -40,7 +40,8 @@ namespace Shop.Model.Models
 
 		public string Content { set; get; }
 
-		public XElement MoreImages { set; get; }
+		[Column(TypeName ="xml")]
+		public string MoreImages { set; get; }
 
 		[MaxLength(500)]
 		public string Image { set; get; }

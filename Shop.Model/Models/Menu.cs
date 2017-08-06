@@ -12,9 +12,11 @@ namespace Shop.Model.Models
 		public int ID { set; get; }
 
 		[Required]
+		[MaxLength(255)]
 		public string Name { set; get; }
 
 		[Required]
+		[MaxLength(500)]
 		public string URL { set; get; }
 
 		[Required]
