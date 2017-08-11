@@ -1,12 +1,7 @@
 ﻿using Shop.Model.Abstract;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace Shop.Model.Models
 {
@@ -16,15 +11,17 @@ namespace Shop.Model.Models
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]//Tự động tăng dần
 		public int ID { set; get; }
+
 		[Required]
 		public string Name { set; get; }
 
 		[Required]
-		[Column(TypeName ="varchar")]
+		[Column(TypeName = "varchar")]
 		[MaxLength(255)]
 		public string Alias { set; get; }
-		
+
 		public int ProductCategoryID { set; get; }
+
 		//Khoá ngoại
 		[ForeignKey("ProductCategoryID")]
 		public virtual IEnumerable<ProductCategory> ProductCategory { set; get; }
@@ -40,7 +37,7 @@ namespace Shop.Model.Models
 
 		public string Content { set; get; }
 
-		[Column(TypeName ="xml")]
+		[Column(TypeName = "xml")]
 		public string MoreImages { set; get; }
 
 		[MaxLength(500)]
@@ -51,8 +48,5 @@ namespace Shop.Model.Models
 		public bool? HotFlag { set; get; }
 
 		public int? ViewCount { set; get; }
-
-
-
 	}
 }

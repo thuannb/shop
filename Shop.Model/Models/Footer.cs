@@ -7,7 +7,7 @@ namespace Shop.Model.Models
 	public class Footer//Tên Model không cần số nhiều
 	{
 		[Key]//Khóa chính
-		[Column(TypeName ="varchar")]
+		[Column(TypeName = "varchar")]
 		[MaxLength(50)]
 		public string ID { set; get; }
 

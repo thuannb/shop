@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Shop.Data.Infrastructure
+﻿namespace Shop.Data.Infrastructure
 {
 	public class DbFactory : Disposable, IDbFactory
 	{
 		private ShopDbContext dbContext;
+
 		public ShopDbContext Init()
 		{
 			//Nếu dbContext = null thì khởi tạo.

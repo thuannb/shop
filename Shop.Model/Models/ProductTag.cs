@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shop.Model.Models
 {
@@ -16,7 +11,7 @@ namespace Shop.Model.Models
 		public int ProductID { set; get; }
 
 		[Key]
-		[Column(TypeName = "varchar", Order =2)]
+		[Column(TypeName = "varchar", Order = 2)]
 		[MaxLength(50)]
 		public string TagID { set; get; }
 
@@ -26,5 +21,4 @@ namespace Shop.Model.Models
 		[ForeignKey("TagID")]
 		public virtual Tag Tag { set; get; }
 	}
-
 }

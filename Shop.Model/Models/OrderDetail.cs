@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shop.Model.Models
 {
@@ -12,7 +8,7 @@ namespace Shop.Model.Models
 	public class OrderDetail
 	{
 		[Key]
-		[Column(Order=1)]//1 Table co 2 khoa chinh
+		[Column(Order = 1)]//1 Table co 2 khoa chinh
 		public int OrderID { set; get; }
 
 		[ForeignKey("OrderID")]

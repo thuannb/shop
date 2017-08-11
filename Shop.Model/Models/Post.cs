@@ -1,11 +1,7 @@
 ﻿using Shop.Model.Abstract;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shop.Model.Models
 {
@@ -42,6 +38,7 @@ namespace Shop.Model.Models
 
 		[ForeignKey("PostCategoryID")]
 		public virtual PostCategory PostCategory { set; get; }
-	}
 
+		public virtual IEnumerable<PostTag> PostTags { set; get; }
+	}
 }
