@@ -1,9 +1,10 @@
-﻿using Shop.Model.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Shop.Model.Models;
 using System.Data.Entity;
 
 namespace Shop.Data
 {
-	public class ShopDbContext : DbContext
+	public class ShopDbContext : IdentityDbContext<ApplicationUser>
 	{
 		//Chuoi ket noi
 		public ShopDbContext() : base("ShopConnection")
@@ -33,10 +34,18 @@ namespace Shop.Data
 		public DbSet<VisitorStatistic> VisitorStatistic { set; get; }
 		public DbSet<Error> Errors { set; get; }
 
+		public static ShopDbContext Create()
+		{
+			return new ShopDbContext();
+		}
+
 		//Ghi đè: Khi chạy chương trình sẽ tạo ra Entities Framework
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-			base.OnModelCreating(modelBuilder);
+			//Khi tạo các table cho bảng ASPIdentity bị lỗi khóa
+			//Tạo khóa cho các bảng đó bằng cách Add key như sau:
+			modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+			modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
 		}
 	}
 }

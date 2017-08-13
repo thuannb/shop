@@ -13,17 +13,24 @@ using Shop.Service;
 using System.Web.Mvc;
 using System.Web.Http;
 using Autofac.Integration.WebApi;
+using Shop.Model.Models;
+using System.Web;
+using Microsoft.Owin.Security.DataProtection;
+using Microsoft.AspNet.Identity;
 
 [assembly: OwinStartup(typeof(Shop.Web.App_Start.Startup))]
 
 namespace Shop.Web.App_Start
 {
-	public class Startup
+	//Trong 1 project có 2 class trùng tên nhau: Startup. thì để partial
+	public partial class Startup
 	{
 		public void Configuration(IAppBuilder app)
 		{
 			//Mục đích: Thay thế mặc định Start của .NET thành cái của mình Register
 			ConfigAutofact(app);
+			//Call đến Class Startup kia(Startup.Auth). Vì vậy 1 tên class trùng nhau thì mình đặt là partial.
+			ConfigureAuth(app);
 		}
 		
 		private void ConfigAutofact(IAppBuilder app)
@@ -39,6 +46,13 @@ namespace Shop.Web.App_Start
 			builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
 			builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
 			builder.RegisterType<ShopDbContext>().AsSelf().InstancePerRequest();
+
+			//Asp.net Identity
+			builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+			builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+			builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+			builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+			builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
 			//Repository. Những cái gì là của Repository
 			builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
