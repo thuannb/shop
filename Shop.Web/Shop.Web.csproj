@@ -223,6 +223,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,6 +243,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Plugins\angular\angular-csp.css" />
+    <Content Include="Scripts\Plugins\angular\angular.js" />
+    <Content Include="Scripts\Plugins\angular\angular.min.js" />
+    <Content Include="Scripts\Plugins\angular\index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -255,7 +260,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\admin\" />
     <Folder Include="Assets\client\" />
-    <Folder Include="Scripts\plugins\" />
     <Folder Include="Scripts\spa\" />
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +285,22 @@
       <Project>{d498b055-5607-48c1-a6f2-3b821b9388c5}</Project>
       <Name>Shop.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".bowerrc" />
+    <Content Include="bower.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Plugins\angular\.bower.json" />
+    <Content Include="Scripts\Plugins\angular\angular.min.js.gzip" />
+    <Content Include="Scripts\Plugins\angular\angular.min.js.map" />
+    <Content Include="Scripts\Plugins\angular\bower.json" />
+    <Content Include="Scripts\Plugins\angular\LICENSE.md" />
+    <Content Include="Scripts\Plugins\angular\package.json" />
+    <Content Include="Scripts\Plugins\angular\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
