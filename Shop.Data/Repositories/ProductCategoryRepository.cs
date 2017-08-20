@@ -14,7 +14,7 @@ namespace Shop.Data.Repositories
 	//Kế thừa tất cả các phương thức: Thêm, xóa, sửa,... từ bên Repository
 	public class ProductCategoryRepository : RepositoryBase<ProductCategory>, IProductCategoryRepository
 	{
-		public ProductCategoryRepository(DbFactory dbFactory) : base(dbFactory)
+		public ProductCategoryRepository(IDbFactory dbFactory) : base(dbFactory)
 		{
 		}
 

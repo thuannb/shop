@@ -1,9 +1,10 @@
-namespace Shop.Data.Migrations
+﻿namespace Shop.Data.Migrations
 {
 	using Microsoft.AspNet.Identity;
 	using Microsoft.AspNet.Identity.EntityFramework;
 	using Model.Models;
 	using System;
+	using System.Collections.Generic;
 	using System.Data.Entity.Migrations;
 	using System.Linq;
 
@@ -15,6 +16,29 @@ namespace Shop.Data.Migrations
 		}
 
 		protected override void Seed(Shop.Data.ShopDbContext context)
+		{
+			this.CreateUser(context);
+			this.CreateProductCategory(context);
+
+		}
+
+		private void CreateProductCategory(ShopDbContext context)
+		{
+			if (context.ProductCategories.Count() == 0)
+			{
+				List<ProductCategory> productCategory = new List<ProductCategory>()
+			{
+				new ProductCategory { Name="Điện lạnh", Alias="dien-lanh", Status=true },
+				new ProductCategory { Name="Viễn thông", Alias="vien-thong", Status=true },
+				new ProductCategory { Name="Đồ gia dụng", Alias="do-gia-dung", Status=true },
+				new ProductCategory { Name="Mỹ phẩm", Alias="my-pham", Status=true }
+			};
+				context.ProductCategories.AddRange(productCategory);
+				context.SaveChanges();
+			}
+		}
+
+		private void CreateUser(ShopDbContext context)
 		{
 			//  This method will be called after migrating to the latest version.
 			var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ShopDbContext()));
@@ -40,7 +64,6 @@ namespace Shop.Data.Migrations
 			var adminUser = manager.FindByEmail("thuannbsts@gmail.com");
 
 			manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
-
 		}
 	}
 }
