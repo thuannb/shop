@@ -262,6 +262,7 @@
     <Content Include="app\shared\filters\statusFiler.js" />
     <Content Include="app\shared\modules\shop.common.js" />
     <Content Include="app\shared\services\apiService.js" />
+    <Content Include="app\shared\services\notificatonService.js" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
     <Content Include="Assets\admin\css\alt\AdminLTE-bootstrap-social.css" />
@@ -509,6 +510,10 @@
     <Content Include="Assets\admin\libs\slimscroll\examples\style.css" />
     <Content Include="Assets\admin\libs\slimscroll\jquery.slimscroll.js" />
     <Content Include="Assets\admin\libs\slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Assets\admin\libs\toastr\toastr.css" />
+    <Content Include="Assets\admin\libs\toastr\toastr.js" />
+    <Content Include="Assets\admin\libs\toastr\toastr.min.css" />
+    <Content Include="Assets\admin\libs\toastr\toastr.min.js" />
     <Content Include="fonts\font-awesome\.gitignore" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
@@ -2112,6 +2117,15 @@
     <Content Include="fonts\Ionicons\scss\_ionicons-font.scss" />
     <Content Include="fonts\Ionicons\scss\_ionicons-icons.scss" />
     <Content Include="fonts\Ionicons\scss\_ionicons-variables.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\admin\libs\toastr\.bower.json" />
+    <Content Include="Assets\admin\libs\toastr\bower.json" />
+    <Content Include="Assets\admin\libs\toastr\LICENSE" />
+    <Content Include="Assets\admin\libs\toastr\README.md" />
+    <Content Include="Assets\admin\libs\toastr\toastr.js.map" />
+    <Content Include="Assets\admin\libs\toastr\toastr.less" />
+    <Content Include="Assets\admin\libs\toastr\toastr.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
