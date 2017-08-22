@@ -2,6 +2,7 @@
 using Shop.Model.Models;
 using Shop.Service;
 using Shop.Web.Infrastructure.Core;
+using Shop.Web.Infrastructure.Extensions;
 using Shop.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,8 @@ namespace Shop.Web.Api
 		}
 
 		[Route("getall")]
+		//Giống như PostMain: POST là Get là lấy ra
+		[HttpGet]
 		public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
 		{
 			return CreateHttpResponse(request, () =>
@@ -46,6 +49,51 @@ namespace Shop.Web.Api
 
 				var response = request.CreateResponse(HttpStatusCode.OK, pageinationSet);
 				return response;
+			});
+		}
+
+		[Route("getallparent")]
+		//Giống như PostMain: POST là Get là lấy ra
+		[HttpGet]
+		public HttpResponseMessage GetAllParent(HttpRequestMessage request)
+		{
+			return CreateHttpResponse(request, () =>
+			{
+				var model = _productCategoryService.GetAll();				
+				var responseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
+				var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+				return response;
+			});
+		}
+
+		[Route("create")]
+		//Giống như PostMain: POST là Create
+		[HttpPost]
+		//Khong can xac thuc
+		[AllowAnonymous]
+		public HttpResponseMessage Create(HttpRequestMessage request, ProductCategoryViewModel productCategoryVm)
+		{
+
+			return CreateHttpResponse(request, () =>
+			{
+				HttpResponseMessage respone = null;
+				if (ModelState.IsValid)
+				{
+					var newProductCategory = new ProductCategory();
+					newProductCategory.UpdateProductCategory(productCategoryVm);
+
+					_productCategoryService.Add(newProductCategory);
+					_productCategoryService.Save();
+
+					//Mapp lai view cho nguoi dung
+					var responeData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(newProductCategory);
+					respone = request.CreateResponse(HttpStatusCode.Created, responeData);
+				}
+				else
+				{
+					request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+				}
+				return respone;
 			});
 		}
 	}

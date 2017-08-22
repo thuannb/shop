@@ -30,9 +30,7 @@
 				if (result.data.TotalCount === 0) {
 					notificationService.displayWarning('Không tìm thấy dữ liệu bạn tìm!', 'Cảnh báo');
 				}
-				else {
-					notificationService.displaySuccess('Dữ liệu đã được tìm thấy!', 'Thông báo');
-				}
+				
 				$scope.productCategories = result.data.Items;
 				$scope.page = result.data.Page;
 				$scope.pagesCount = result.data.PagesCount;

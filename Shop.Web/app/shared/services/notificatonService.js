@@ -34,10 +34,10 @@
 		}
 
 		function displayError(error, title) {
-			if (Array.isArray) {
+			if (Array.isArray(error)) {
 				error.each(function (err) {
 					toastr.error(err, title);
-				})
+				});
 			}
 			else {
 				toastr.error(error, title);
