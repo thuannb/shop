@@ -66,6 +66,20 @@ namespace Shop.Web.Api
 			});
 		}
 
+		[Route("getByID/{id:int}")]
+		//Giống như PostMain: POST là Get là lấy ra
+		[HttpGet]
+		public HttpResponseMessage GetByID(HttpRequestMessage request, int id)
+		{
+			return CreateHttpResponse(request, () =>
+			{
+				var model = _productCategoryService.GetById(id);
+				var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(model);
+				var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+				return response;
+			});
+		}
+
 		[Route("create")]
 		//Giống như PostMain: POST là Create
 		[HttpPost]
@@ -82,11 +96,44 @@ namespace Shop.Web.Api
 					var newProductCategory = new ProductCategory();
 					newProductCategory.UpdateProductCategory(productCategoryVm);
 
+					newProductCategory.CreatedDate = DateTime.Now;
+
 					_productCategoryService.Add(newProductCategory);
 					_productCategoryService.Save();
 
 					//Mapp lai view cho nguoi dung
 					var responeData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(newProductCategory);
+					respone = request.CreateResponse(HttpStatusCode.Created, responeData);
+				}
+				else
+				{
+					request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+				}
+				return respone;
+			});
+		}
+
+		[Route("update")]
+		//Giống như PostMain: POST là Create
+		[HttpPut]
+		//Khong can xac thuc
+		[AllowAnonymous]
+		public HttpResponseMessage Update(HttpRequestMessage request, ProductCategoryViewModel productCategoryVm)
+		{
+			return CreateHttpResponse(request, () =>
+			{
+				HttpResponseMessage respone = null;
+				if (ModelState.IsValid)
+				{
+					var updateProductCategory = _productCategoryService.GetById(productCategoryVm.ID);
+					updateProductCategory.UpdateProductCategory(productCategoryVm);
+					updateProductCategory.UpdatedDate = DateTime.Now;
+
+					_productCategoryService.Update(updateProductCategory);
+					_productCategoryService.Save();
+
+					//Mapp lai view cho nguoi dung
+					var responeData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(updateProductCategory);
 					respone = request.CreateResponse(HttpStatusCode.Created, responeData);
 				}
 				else

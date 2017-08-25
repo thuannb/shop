@@ -249,8 +249,10 @@
     <Content Include="app\components\productCategories\productCategories.module.js" />
     <Content Include="app\components\productCategories\productCategoryAddController.js" />
     <Content Include="app\components\productCategories\productCategoryAddView.html" />
+    <Content Include="app\components\productCategories\productCategoryUpdateController.js" />
     <Content Include="app\components\productCategories\productCategoryListController.js" />
     <Content Include="app\components\productCategories\productCategoryListView.html" />
+    <Content Include="app\components\productCategories\productCategoryUpdateView.html" />
     <Content Include="app\components\products\productAddController.js" />
     <Content Include="app\components\products\productAddView.html" />
     <Content Include="app\components\products\productEditController.js" />
@@ -264,6 +266,7 @@
     <Content Include="app\shared\filters\statusFiler.js" />
     <Content Include="app\shared\modules\shop.common.js" />
     <Content Include="app\shared\services\apiService.js" />
+    <Content Include="app\shared\services\commonService.js" />
     <Content Include="app\shared\services\notificatonService.js" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
