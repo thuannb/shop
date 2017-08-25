@@ -278,6 +278,7 @@
     <Content Include="Assets\admin\css\alt\AdminLTE-select2.min.css" />
     <Content Include="Assets\admin\css\alt\AdminLTE-without-plugins.css" />
     <Content Include="Assets\admin\css\alt\AdminLTE-without-plugins.min.css" />
+    <Content Include="Assets\admin\css\custom.css" />
     <Content Include="Assets\admin\css\skins\skin-black-light.css" />
     <Content Include="Assets\admin\css\skins\skin-black-light.min.css" />
     <Content Include="Assets\admin\css\skins\skin-black.css" />
@@ -339,6 +340,19 @@
     <Content Include="Assets\admin\js\demo.js" />
     <Content Include="Assets\admin\js\pages\dashboard.js" />
     <Content Include="Assets\admin\js\pages\dashboard2.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\.gitignore" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\demo\index.html" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\dist\mask.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\dist\mask.min.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\gulpfile.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\index.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\karma.conf.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\logos\browser-stack.png" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\protractor.config.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\protractor.travis.config.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\src\mask.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\test\maskSpec.js" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\test\maskSpec.protractor.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\karma.conf.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\migrate\migratewarn.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\release\angular-ui-router.js" />
@@ -2131,6 +2145,15 @@
     <Content Include="Assets\admin\libs\toastr\toastr.js.map" />
     <Content Include="Assets\admin\libs\toastr\toastr.less" />
     <Content Include="Assets\admin\libs\toastr\toastr.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\admin\libs\angular-ui-mask\.bower.json" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\.jshintrc" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\.travis.yml" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\bower.json" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\LICENSE" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\package.json" />
+    <Content Include="Assets\admin\libs\angular-ui-mask\README.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -11,10 +11,11 @@ namespace Shop.Web.Models
 		public int ID { set; get; }
 
 		//Validate
-		[Required]
+		[Required(ErrorMessage = "Tên không được trống")]
+		[MaxLength(255, ErrorMessage = "Chiều dài không vượt 255")]
 		public string Name { set; get; }
 
-		[Required]
+		[Required(ErrorMessage = "Alias không được trống")]
 		public string Alias { set; get; }
 
 		public string Description { set; get; }
@@ -29,7 +30,7 @@ namespace Shop.Web.Models
 		public virtual IEnumerable<PostViewModel> Posts { set; get; }
 
 		public DateTime? CreatedDate { set; get; }
-		
+
 		public string CreatedBy { set; get; }
 
 		public DateTime? UpdatedDate { set; get; }
