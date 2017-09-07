@@ -9,10 +9,16 @@
 			url: "/products",
 			templateUrl: "/app/components/products/productListView.html",
 			controller: "productListController"
-		}).state('productadd', {
-			url: "/productadd",
+		})
+			.state('productsAdd', {
+			url: "/productsAdd",
 			templateUrl: "/app/components/products/productAddView.html",
 			controller: "productAddController"
+		})
+			.state('productsEdit', {
+			url: "/productsEdit/:id",
+			templateUrl: "/app/components/products/productEditView.html",
+			controller: "productEditController"
 		});
 	}
 })();

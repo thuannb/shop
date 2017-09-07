@@ -80,6 +80,14 @@
     <Compile Include="Migrations\201708131357077_UpdateColumn.Designer.cs">
       <DependentUpon>201708131357077_UpdateColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708270626570_AddFieldTagsForProducts.cs" />
+    <Compile Include="Migrations\201708270626570_AddFieldTagsForProducts.Designer.cs">
+      <DependentUpon>201708270626570_AddFieldTagsForProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708270826164_UpdateProductCategoryAndProduct.cs" />
+    <Compile Include="Migrations\201708270826164_UpdateProductCategoryAndProduct.Designer.cs">
+      <DependentUpon>201708270826164_UpdateProductCategoryAndProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -98,6 +106,7 @@
     <Compile Include="Repositories\SlideRepository.cs" />
     <Compile Include="Repositories\SupportOnlineRepository.cs" />
     <Compile Include="Repositories\SystemConfigRepository.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\VisitorStatisticRepository.cs" />
     <Compile Include="ShopDbContext.cs" />
   </ItemGroup>
@@ -127,6 +136,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708131357077_UpdateColumn.resx">
       <DependentUpon>201708131357077_UpdateColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708270626570_AddFieldTagsForProducts.resx">
+      <DependentUpon>201708270626570_AddFieldTagsForProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708270826164_UpdateProductCategoryAndProduct.resx">
+      <DependentUpon>201708270826164_UpdateProductCategoryAndProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

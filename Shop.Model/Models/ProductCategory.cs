@@ -21,11 +21,11 @@ namespace Shop.Model.Models
 		[MaxLength(255)]
 		public string Alias { set; get; }
 
-		public int? ParentID { set; get; }
-
 		[MaxLength(500)]
 		public string Description { set; get; }
 
+		public int? ParentID { set; get; }
+		
 		public int? DisplayOrder { set; get; }
 
 		[MaxLength(500)]

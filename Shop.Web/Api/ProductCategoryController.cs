@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 
 namespace Shop.Web.Api
 {
@@ -143,5 +144,65 @@ namespace Shop.Web.Api
 				return respone;
 			});
 		}
+		
+		[Route("delete")]
+		[HttpDelete]
+		[AllowAnonymous]
+		public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+		{
+			return CreateHttpResponse(request, () =>
+			{
+				HttpResponseMessage respone = null;
+				if (ModelState.IsValid)
+				{
+					var oldProductCategory = _productCategoryService.Delete(id);
+					_productCategoryService.Save();
+
+					//Mapp lai view cho nguoi dung
+					var responeData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(oldProductCategory);
+					respone = request.CreateResponse(HttpStatusCode.Created, responeData);
+				}
+				else
+				{
+					request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+				}
+				return respone;
+			});
+		}
+
+		/// <summary>
+		///  Xóa nhiều bản ghi
+		/// </summary>
+		/// <param name="request"></param>
+		/// <param name="listID"></param>
+		/// <returns></returns>
+		[Route("deletemulti")]
+		[HttpDelete]
+		[AllowAnonymous]
+		public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string listDeleteProductCategory)
+		{
+			return CreateHttpResponse(request, () =>
+			{
+				HttpResponseMessage respone = null;
+				if (ModelState.IsValid)
+				{
+					//Convert string to JSON
+					var listDelete = new JavaScriptSerializer().Deserialize<List<int>>(listDeleteProductCategory);
+					foreach (var id in listDelete)
+					{
+						_productCategoryService.Delete(id);
+					}
+					_productCategoryService.Save();
+					
+					respone = request.CreateResponse(HttpStatusCode.OK, listDelete.Count());
+				}
+				else
+				{
+					request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+				}
+				return respone;
+			});
+		}
+		
 	}
 }

@@ -24,7 +24,7 @@ namespace Shop.Model.Models
 
 		//Khoá ngoại
 		[ForeignKey("ProductCategoryID")]
-		public virtual IEnumerable<ProductCategory> ProductCategory { set; get; }
+		public virtual ProductCategory ProductCategory { set; get; }
 
 		public decimal Price { set; get; }
 
@@ -48,5 +48,7 @@ namespace Shop.Model.Models
 		public bool? HotFlag { set; get; }
 
 		public int? ViewCount { set; get; }
+
+		public string Tags { set; get; }
 	}
 }

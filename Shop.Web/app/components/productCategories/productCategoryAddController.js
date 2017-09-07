@@ -16,6 +16,12 @@
 
 		$scope.addProductCategory = addProductCategory;
 
+		$scope.GetSeoTitle = GetSeoTitle;
+
+		function GetSeoTitle() {
+			$scope.productCategory.Alias = commonService.getSeoTitle($scope.productCategory.Name);
+		}
+
 		function addProductCategory() {
 			apiService.post('api/productcategory/create', $scope.productCategory,
 			  function (result) {

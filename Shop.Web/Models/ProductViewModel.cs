@@ -13,7 +13,7 @@ namespace Shop.Web.Models
 
 		public string Alias { set; get; }
 
-		public int CategoryID { set; get; }
+		public int ProductCategoryID { set; get; }
 
 		public string Image { set; get; }
 
@@ -48,6 +48,8 @@ namespace Shop.Web.Models
 		public string MetaDescription { set; get; }
 
 		public bool Status { set; get; }
+
+		public string Tags { get; set; }
 
 		public virtual ProductCategoryViewModel ProductCategory { set; get; }
 	}
