@@ -9,16 +9,19 @@
 
 		$stateProvider.state('productCategories', {
 			url: "/productCategories",
+			parent: 'base',
 			templateUrl: "/app/components/productCategories/productCategoryListView.html",
 			controller: "productCategoryListController"
 		})
 			.state('productCategoryAdd', {
-			url: "/productCategoryAdd",
-			templateUrl: "/app/components/productCategories/productCategoryAddView.html",
-			controller: "productCategoryAddController"
+				url: "/productCategoryAdd",
+				parent: 'base',
+				templateUrl: "/app/components/productCategories/productCategoryAddView.html",
+				controller: "productCategoryAddController"
 			})
 			.state('productCategoryUpdate', {
 				url: "/productCategoryUpdate/:id",
+				parent: 'base',
 				templateUrl: "/app/components/productCategories/productCategoryUpdateView.html",
 				controller: "productCategoryUpdateController"
 			});
