@@ -4,6 +4,7 @@ using Shop.Service;
 using Shop.Web.Infrastructure.Core;
 using Shop.Web.Infrastructure.Extensions;
 using Shop.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -12,6 +13,7 @@ using System.Web.Http;
 namespace Shop.Web.Api
 {
 	[RoutePrefix("api/postCategoryController")]
+	[Authorize]
 	public class PostCategoryController : ApiControllerBase
 	{
 		private IPostCategoryService _postCategoryService;
@@ -48,6 +50,9 @@ namespace Shop.Web.Api
 					PostCategory newPostCategory = new PostCategory();
 					//Phương thức UpdatePostCategory là 1 phương thức Extenssion : tham khảo có truyển từ this
 					newPostCategory.UpdatePostCategory(postCategoryVm);
+					newPostCategory.CreatedDate = DateTime.Now;
+					newPostCategory.CreatedBy = User.Identity.Name;
+
 					var postCategory = _postCategoryService.Add(newPostCategory);
 
 					_postCategoryService.Save();
@@ -73,7 +78,8 @@ namespace Shop.Web.Api
 				{
 					var postCategoryDB = _postCategoryService.GetById(postCategoryVM.ID);
 					postCategoryDB.UpdatePostCategory(postCategoryVM);
-
+					postCategoryDB.UpdatedDate = DateTime.Now;
+					postCategoryDB.UpdatedBy = User.Identity.Name;
 					_postCategoryService.Update(postCategoryDB);
 					_postCategoryService.Save();
 

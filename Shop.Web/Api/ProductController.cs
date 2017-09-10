@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace Shop.Web.Api
 {
 	[RoutePrefix("api/product")]
+	[Authorize]
 	public class ProductController : ApiControllerBase
     {
 		private IProductService _productService;
@@ -97,7 +98,7 @@ namespace Shop.Web.Api
 					newProduct.UpdateProduct(productVm);
 
 					newProduct.CreatedDate = DateTime.Now;
-
+					newProduct.CreatedBy = User.Identity.Name;
 					_productService.Add(newProduct);
 					_productService.Save();
 
@@ -128,7 +129,7 @@ namespace Shop.Web.Api
 					var updateProduct = _productService.GetByID(productVm.ID);
 					updateProduct.UpdateProduct(productVm);
 					updateProduct.UpdatedDate = DateTime.Now;
-
+					updateProduct.UpdatedBy = User.Identity.Name;
 					_productService.Update(updateProduct);
 					_productService.Save();
 
