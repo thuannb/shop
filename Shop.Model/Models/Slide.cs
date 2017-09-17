@@ -27,5 +27,7 @@ namespace Shop.Model.Models
 
 		[Required]
 		public bool Status { set; get; }
+
+		public string Content { set; get; }
 	}
 }

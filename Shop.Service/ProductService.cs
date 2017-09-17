@@ -10,12 +10,15 @@ using System.Threading.Tasks;
 
 namespace Shop.Service
 {
-	public interface IProductService {
+	public interface IProductService
+	{
 		Product Add(Product product);
 		Product Delete(int id);
 		void Update(Product product);
 		IEnumerable<Product> GetAll();
 		IEnumerable<Product> GetAll(string keyword);
+		IEnumerable<Product> GetLastestProduct(int top);
+		IEnumerable<Product> GetHotProduct(int top);
 		Product GetByID(int id);
 		void Save();
 	}
@@ -28,7 +31,8 @@ namespace Shop.Service
 		IUnitOfWork _unitOfWork;
 
 		public ProductService(IProductRepository productRepostory, IProductTagRepository productTagRepository,
-			ITagRepository tagRepository, IUnitOfWork unitOfWork) {
+			ITagRepository tagRepository, IUnitOfWork unitOfWork)
+		{
 			this._productRepository = productRepostory;
 			this._tagRepository = tagRepository;
 			this._productTagRepository = productTagRepository;
@@ -37,7 +41,7 @@ namespace Shop.Service
 
 		public Product Add(Product product)
 		{
-			var productRes= this._productRepository.Add(product);
+			var productRes = this._productRepository.Add(product);
 			_unitOfWork.Commit();
 
 			if (!string.IsNullOrEmpty(product.Tags))
@@ -124,6 +128,16 @@ namespace Shop.Service
 					this._productTagRepository.Add(productTag);
 				}
 			}
+		}
+
+		public IEnumerable<Product> GetLastestProduct(int top)
+		{
+			return _productRepository.GetMulti(x => x.Status).OrderByDescending(x => x.CreatedBy).Take(top);
+		}
+
+		public IEnumerable<Product> GetHotProduct(int top)
+		{
+			return _productRepository.GetMulti(x => x.Status && x.HotFlag == true).OrderByDescending(x => x.CreatedBy).Take(top);
 		}
 	}
 }
